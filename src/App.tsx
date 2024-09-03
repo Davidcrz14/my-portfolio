@@ -47,7 +47,7 @@ export default function Component() {
 
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'} transition-colors duration-300`} ref={containerRef}>
-      <nav className={`w-32 ${darkMode ? 'bg-gray-800' : 'bg-white'} fixed h-full overflow-auto z-10 transition-colors duration-300 flex flex-col items-center py-8`}>
+      <nav className={`w-32  fixed h-full overflow-auto z-10 transition-colors duration-300 flex flex-col items-center py-8`}>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
