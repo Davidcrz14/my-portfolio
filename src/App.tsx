@@ -130,6 +130,8 @@ export default function Component() {
                 <Button
                   onClick={() => scrollToSection('about')}
                   className={`transition-colors duration-300 ${darkMode ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-blue-950 text-white hover:bg-blue-900'}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Conóceme
                 </Button>
@@ -162,10 +164,15 @@ export default function Component() {
                     transition={{ delay: 0.4 }}
                   >
                     {section.id === 'about' && (
-                      <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                      <motion.p
+                        className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         Soy estudiante de Ingeniería en Computación, apasionado por la tecnología y la programación. Disfruto trabajar en equipo y resolver problemas que afectan a la sociedad mediante el desarrollo de software que facilite la vida de los usuarios. <br />
                         Vivo en Oaxaca de Juárez, tengo 18 años y me gusta practicar deportes, dibujar y diseñar.
-                      </p>
+                      </motion.p>
                     )}
                     {section.id === 'experience' && (
                       <ul className="space-y-4">
@@ -199,7 +206,7 @@ export default function Component() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, rotate: 5 }}
                           >
                             {skill}
                           </motion.div>
@@ -268,15 +275,23 @@ export default function Component() {
                             initial={{ y: 50, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: index * 0.1 }}
+                            whileHover={{ scale: 1.02 }}
                           >
                             <div className="p-4">
                               <h3 className={`text-2xl font-semibold ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{project.title}</h3>
                               <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mt-2`}>
                                 {project.description}
                               </p>
-                              <a href={project.link} className={`mt-4 inline-block ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`} target="_blank" rel="noopener noreferrer">
+                              <motion.a
+                                href={project.link}
+                                className={`mt-4 inline-block ${darkMode ? 'text-blue-400' : 'text-blue-600'} hover:underline`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
                                 Ver en GitHub
-                              </a>
+                              </motion.a>
                             </div>
                           </motion.div>
                         ))}
@@ -295,30 +310,38 @@ export default function Component() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <Button variant="ghost" size="icon" asChild>
-          <a href="https://github.com/Davidcrz14" aria-label="GitHub">
-            <Github className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
-          </a>
-        </Button>
-        <Button variant="ghost" size="icon" asChild>
-          <a href="https://x.com/programacionori" aria-label="Twitter">
-            <TwitterIcon className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
-          </a>
-        </Button>
-        <Button variant="ghost" size="icon" asChild>
-          <a href="mailto:cucd060823@gs.utm.mx" aria-label="Email">
-            <Mail className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
-          </a>
-        </Button>
-        <Button
-          onClick={toggleDarkMode}
-          variant="ghost"
-          size="icon"
-          aria-label="Toggle Dark Mode"
-          className="ml-4"
-        >
-          {darkMode ? <Sun className="h-6 w-6 text-gray-400" /> : <Moon className="h-6 w-6 text-blue-400" />}
-        </Button>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button variant="ghost" size="icon" asChild>
+            <a href="https://github.com/Davidcrz14" aria-label="GitHub">
+              <Github className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
+            </a>
+          </Button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button variant="ghost" size="icon" asChild>
+            <a href="https://x.com/programacionori" aria-label="Twitter">
+              <TwitterIcon className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
+            </a>
+          </Button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button variant="ghost" size="icon" asChild>
+            <a href="mailto:cucd060823@gs.utm.mx" aria-label="Email">
+              <Mail className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-blue-400'}`} />
+            </a>
+          </Button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button
+            onClick={toggleDarkMode}
+            variant="ghost"
+            size="icon"
+            aria-label="Toggle Dark Mode"
+            className="ml-4"
+          >
+            {darkMode ? <Sun className="h-6 w-6 text-gray-400" /> : <Moon className="h-6 w-6 text-blue-400" />}
+          </Button>
+        </motion.div>
       </motion.footer>
     </div>
   );
